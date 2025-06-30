@@ -14,7 +14,7 @@ jobs:
           node-version: '16'
 
       - name: Clone source repository
-        run: git clone https://$TOKEN@github.com/owner/EtymoProto.git
+        run: git clone https://$TOKEN@github.com/K-Sy/EtymoProto.git
         env:
           TOKEN: ${{ secrets.TOKEN }}
 
