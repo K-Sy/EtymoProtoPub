@@ -9,22 +9,25 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      - run: npm install
+      - name: Clone source repository
+        run: git clone https://github.com/K-Sy/EtymoProto.git
 
-      - run: npm run build
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./EtymoProto
+
+      - name: Build
+        run: npm run build
+        working-directory: ./EtymoProto
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.ACTIONS_PAT }}
-          publish_dir: ./dist
+          publish_dir: ./EtymoProto/dist
           publish_branch: gh-pages
           destination_repo: yourusername/yourusername.github.io
