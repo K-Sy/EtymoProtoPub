@@ -14,7 +14,9 @@ jobs:
           node-version: '16'
 
       - name: Clone source repository
-        run: git clone https://github.com/K-Sy/EtymoProto.git
+        run: git clone https://$TOKEN@github.com/owner/EtymoProto.git
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
 
       - name: Install dependencies
         run: npm install
